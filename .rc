@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+alias dc="docker compose";
+alias run="dc exec -it workspace";
+alias build="dc build workspace";
+alias up="dc up workspace -d";
+alias node="run node";
+alias npm="run npm";
