@@ -7,5 +7,5 @@ services:
       dockerfile: Dockerfile
     tty: true
     volumes:
-      - ".:/workspace"
+      - "..:/workspace"
       - "$HOME/.ssh/:/root/.ssh/"
