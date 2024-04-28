@@ -1,12 +1,13 @@
 function mergeAlternately(word1: string, word2: string): string {
-  const word1Chars = word1.split('').reverse();
-  const word2Chars = word2.split('').reverse();
+  const w1 = word1.length;
+  const w2 = word2.length
 
-  let result = '';
+  let result = '', i = 0;
 
-  while(word1Chars.length > 0 || word2Chars.length > 0) {
-    if (word1Chars.length > 0) result += word1Chars.pop();
-    if (word2Chars.length > 0) result += word2Chars.pop();
+  while (i < w1 || i < w2) {
+    if (i < w1) result += word1[i];
+    if (i < w2) result += word2[i];
+    i++;
   }
 
   return result;
