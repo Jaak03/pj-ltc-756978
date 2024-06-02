@@ -1,19 +1,27 @@
 function gcdOfStrings(str1: string, str2: string): string {
-    if (str2 === '') return str2;
+    let slice = 0;
+    let segment = ''
 
-    const match = str1.match(new RegExp(`^(${str2})+`));
+    // Find the smallest divisor
+    do {
+        const sub = str2.slice(0, slice++);
+        if (
+            str1.replace(new RegExp(sub, 'g'), '') === ''
+        ) segment = sub;
+    } while (slice <= str2.length);
 
-    if (!match) return '';
-    if (str1 === str2) return str1;
+    if (segment === '') return '';
 
-    // if (str2.length % 2 !== 0) return str1;
-    if(str1.replace(str2, '') !== '') return str1;
+    // Try multiples of that
+    const increments =  Math.floor(str1.length / segment.length);
+    for (let i = 2; i < increments; i++) {
+        const sub = segment.repeat(i);
+        if (
+            str2.replace(new RegExp(sub, 'g'), '') === ''
+        ) return sub;
+    }
 
-    const divisor = gcdOfStrings(str2, str2.slice(0, str2.length/2));
-
-    if (divisor === '') return str2;
-
-    return divisor;
+    return segment;
 };
 
 export default gcdOfStrings;
