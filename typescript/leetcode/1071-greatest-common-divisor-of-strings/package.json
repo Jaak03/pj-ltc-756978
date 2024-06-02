@@ -1,0 +1,28 @@
+{
+  "name": "pj-mts-551972",
+  "description": "Project to track the leetcode challenges that I am doing and store the environment.",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "build": "tsc"
+  },
+  "main": "index.js",
+  "prettier": {
+    "semi": true,
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 80,
+    "tabWidth": 2
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.15.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.1.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.4.2"
+  },
+  "private": true
+}
