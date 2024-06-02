@@ -16,6 +16,9 @@ describe('index', () => {
   it('should match submission criteria 1', () => {
     expect(challenge('ABABABAB', 'ABAB')).toEqual('ABAB');
   })
+  it('should match submission criteria 2', () => {
+    expect(challenge('AAAAAAAAA', 'AAACCC')).toEqual('');
+  })
   it('should match multiples', () => {
     expect(challenge('ABABABABABABABAB', 'ABABABAB')).toEqual('ABABABAB');
   })

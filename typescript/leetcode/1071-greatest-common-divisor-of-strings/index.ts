@@ -7,6 +7,7 @@ function gcdOfStrings(str1: string, str2: string): string {
         const sub = str2.slice(0, slice++);
         if (
             str1.replace(new RegExp(sub, 'g'), '') === ''
+            && str2.replace(new RegExp(sub, 'g'), '') === ''
         ) {
             segment = sub;
             break;
