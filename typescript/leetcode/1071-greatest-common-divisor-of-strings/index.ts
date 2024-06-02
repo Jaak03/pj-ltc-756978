@@ -1,35 +1,27 @@
 function gcdOfStrings(str1: string, str2: string): string {
-    let slice = 1;
-    let segment = '';
+    // Checking this first to get it off the bat
+    if (str1 === '' || str2 === '') return '';
+    
+    // Function to check if the entire string can be constructed by repeating the given segment
+    function isDivisor(segment: string, str: string): boolean {
+        const repeatCount = Math.floor(str.length / segment.length);
+        return segment.repeat(repeatCount) === str;
+    }
 
-    // Find the smallest divisor
-    do {
-        const sub = str2.slice(0, slice++);
-        if (
-            str1.replace(new RegExp(sub, 'g'), '') === ''
-            && str2.replace(new RegExp(sub, 'g'), '') === ''
-        ) {
-            segment = sub;
-            break;
-        };
-    } while (slice <= str2.length);
+    // Find the greatest common divisor (GCD) length of str1 and str2
+    function gcd(a: number, b: number): number {
+        return b === 0 ? a : gcd(b, a % b);
+    }
 
-    // No divisor found
-    if (segment === '') return '';
+    const gcdLength = gcd(str1.length, str2.length);
+    const candidate = str1.slice(0, gcdLength);
 
-    // Try multiples of that divisor
-    let multiples = 1, divisor = segment, sub = '';
-    do {
-        sub = segment.repeat(multiples++);
-        if (
-            str1.replace(new RegExp(sub, 'g'), '') === ''
-            && str2.replace(new RegExp(sub, 'g'), '') === ''
-        ) {
-            divisor = sub;
-        }
-    } while (sub.length < str2.length);
+    // Check if candidate can construct both str1 and str2
+    if (isDivisor(candidate, str1) && isDivisor(candidate, str2)) {
+        return candidate;
+    }
 
-    return divisor;
+    return '';
 };
 
 export default gcdOfStrings;
