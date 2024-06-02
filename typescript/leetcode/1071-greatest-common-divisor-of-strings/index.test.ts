@@ -10,7 +10,7 @@ describe('index', () => {
   it('should match example 2', () => {
     expect(challenge('ABABAB', 'ABAB')).toEqual('AB');
   })
-  it('should match example 2', () => {
+  it('should match example 3', () => {
     expect(challenge('LEET', 'CODE')).toEqual('');
   })
   it('should handle the second word being empty', () => {
