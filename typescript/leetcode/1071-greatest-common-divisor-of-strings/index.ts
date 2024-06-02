@@ -17,16 +17,18 @@ function gcdOfStrings(str1: string, str2: string): string {
     if (segment === '') return '';
 
     // Try multiples of that divisor
-    let multiples = 2;
-    let sub = '';
-    let divisor = segment;
+    let multiples = 1;
+    let divisor = '';
     do {
-        sub = segment.repeat(multiples++);
+        divisor = segment.repeat(multiples++);
+        let regex = new RegExp(`(?=${divisor})`, 'g');
+        const parts = (str1.match(regex) || []);
         if (
-            str1.replace(new RegExp(sub, 'g'), '') === ''
-            && str2.replace(new RegExp(sub, 'g'), '') === ''
-        ) divisor = sub;
-    } while (sub.length <= str2.length);
+            parts.length < 0
+        ) {
+            break;
+        }
+    } while (divisor.length < str2.length);
 
     return divisor;
 };

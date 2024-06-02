@@ -8,7 +8,7 @@ describe('index', () => {
     expect(challenge('ABCABC', 'ABC')).toEqual('ABC');
   }) 
   it('should match example 2', () => {
-    expect(challenge('ABABAB', 'ABAB')).toEqual('ABAB');
+    expect(challenge('ABABAB', 'ABAB')).toEqual('AB');
   })
   it('should match example 3', () => {
     expect(challenge('LEET', 'CODE')).toEqual('');
