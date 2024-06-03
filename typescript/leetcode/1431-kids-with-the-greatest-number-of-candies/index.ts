@@ -1,4 +1,4 @@
 export default function kidsWithCandies(candies: number[], extraCandies: number): boolean[] {
-  const maxCandies = Math.max(...candies);
-  return candies.map(numberOfCandies => numberOfCandies + extraCandies >= maxCandies);
+  const threshold = Math.max(...candies) - extraCandies;
+  return candies.map(numberOfCandies => numberOfCandies  >= threshold);
 };
