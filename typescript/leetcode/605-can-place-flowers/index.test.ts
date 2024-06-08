@@ -1,4 +1,5 @@
 import { test } from './index';
+
 describe('index', () => {
   it('should call the function', () => {
     try {

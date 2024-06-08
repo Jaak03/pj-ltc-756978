@@ -8,4 +8,4 @@ Given an integer array `flowerbed` containing `0`'s and `1`'s, where `0` means e
 [can-place-flowers](https://leetcode.com/problems/can-place-flowers/description/?envType=study-plan-v2&envId=leetcode-75)
 
 ## notion ##
-* [Notion page](https://tri2be.notion.site)
+* [Notion page](https://tri2be.notion.site/can-place-flowers-540629fa216d41b180ce866af8dee510?pvs=4)
