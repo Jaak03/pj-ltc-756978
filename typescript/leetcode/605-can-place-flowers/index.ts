@@ -1,22 +1,15 @@
 export function test(flowerbed: number[], n: number): boolean {
   let openSpots = 0;
+  const length = flowerbed.length;
 
-  if (flowerbed.length === 1 && flowerbed[0] === 0) return true;
-  
-  for(let i = 0; i < flowerbed.length; i++) {
-    if (flowerbed[i] === 1) continue;
-
+  for (let i = 0; i < length && openSpots < n; i++) {
     if (flowerbed[i] === 0) {
-      let result = true;
-      const lower = i - 1;
-      const upper = i + 1;
+      const prevEmpty = (i === 0) || (flowerbed[i - 1] === 0);
+      const nextEmpty = (i === length - 1) || (flowerbed[i + 1] === 0);
 
-      if (lower >= 0 && flowerbed[lower] !== 0) result = false;
-      if (upper < flowerbed.length && flowerbed[upper] !== 0) result = false;
-
-      if (result) {
+      if (prevEmpty && nextEmpty) {
         openSpots++;
-        i = upper;
+        i++; // Skip the next spot as we planted a flower here
       }
     }
   }
