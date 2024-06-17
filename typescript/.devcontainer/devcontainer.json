@@ -42,7 +42,8 @@
 				"Orta.vscode-jest",
 				"GitHub.copilot",
 				"mhutchie.git-graph",
-				"kavod-io.vscode-jest-test-adapter"
+				"kavod-io.vscode-jest-test-adapter",
+				"firsttris.vscode-jest-runner"
 			]
 		}
 	},
