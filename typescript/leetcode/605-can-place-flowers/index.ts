@@ -6,20 +6,18 @@ export function test(flowerbed: number[], n: number): boolean {
   for(let i = 0; i < flowerbed.length; i++) {
     if (flowerbed[i] === 1) continue;
 
-    // Had to do some checks here for those little 2 spot edge cases
-    if (
-      flowerbed[i+1] === 0
-      && (
-        i === 0
-        || i >= flowerbed.length - 2
-        || flowerbed[i+2] === 0
-      )
-    ) {
-      openSpots++;
-      flowerbed[i] = 3;
-      console.log(flowerbed);
-      i += 1;
-      continue;
+    if (flowerbed[i] === 0) {
+      let result = true;
+      const lower = i - 1;
+      const upper = i + 1;
+
+      if (lower >= 0 && flowerbed[lower] !== 0) result = false;
+      if (upper < flowerbed.length && flowerbed[upper] !== 0) result = false;
+
+      if (result) {
+        openSpots++;
+        i = upper;
+      }
     }
   }
 
