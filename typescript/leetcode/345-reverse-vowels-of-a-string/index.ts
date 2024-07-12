@@ -1,21 +1,28 @@
 export function test(s: string): string {
   const vowels = new Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']);
-  let swaps: string[] = [];
-  const word = s.split('').map((char) => {
-    if (vowels.has(char)) {
-      swaps.push(char);
-      return '{#}';
+  const swaps: string[] = [];
+  let result = '';
+
+  // First pass: collect vowels and replace them with placeholders
+  for (let i = 0; i < s.length; i++) {
+    if (vowels.has(s[i])) {
+      swaps.push(s[i]);
+      result += '{#}';
+    } else {
+      result += s[i];
     }
+  }
 
-    return char;
-  });
+  // Second pass: replace placeholders with reversed vowels
+  let swapIndex = swaps.length - 1;
+  for (let i = 0; i < result.length; i++) {
+    if (result[i] === '#' && result[i - 1] === '{' && result[i + 1] === '}') {
+      result =
+        result.substring(0, i - 1) +
+        swaps[swapIndex--] +
+        result.substring(i + 2);
+    }
+  }
 
-  swaps = swaps.reverse();
-
-  const response = word.map((char) => {
-    if (char === '{#}') return swaps.shift();
-    return char;
-  });
-
-  return response.join('');
+  return result;
 }

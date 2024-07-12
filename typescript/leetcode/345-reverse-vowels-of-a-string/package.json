@@ -3,7 +3,7 @@
   "description": "Project to track the leetcode challenges that I am doing and store the environment.",
   "scripts": {
     "lint": "eslint .",
-    "test": "jest",
+    "test": "jest --watch index.test.ts index.ts",
     "build": "tsc"
   },
   "main": "index.js",
