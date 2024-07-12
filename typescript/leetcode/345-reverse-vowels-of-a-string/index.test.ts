@@ -52,6 +52,12 @@ describe('index', () => {
     expect(test(input)).toBe(output);
   });
 
+  it('should cover sentences too', () => {
+    const input = 'A man, a plan, a canal -- Panama';
+    const output = 'a man, a plan, a canal -- PanamA';
+    expect(test(input)).toBe(output);
+  });
+
   it('should run fast and efficient', () => {
     const input = 'leetcode';
     const output = 'leotcede';
