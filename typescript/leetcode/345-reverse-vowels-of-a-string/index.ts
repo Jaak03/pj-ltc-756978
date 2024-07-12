@@ -7,7 +7,7 @@ export function test(s: string): string {
   for (let i = 0; i < s.length; i++) {
     if (vowels.has(s[i])) {
       swaps.push(s[i]);
-      result += '{#}';
+      result += '--';
     } else {
       result += s[i];
     }
@@ -15,14 +15,16 @@ export function test(s: string): string {
 
   // Second pass: replace placeholders with reversed vowels
   let swapIndex = swaps.length - 1;
+  let response = '';
   for (let i = 0; i < result.length; i++) {
-    if (result[i] === '#' && result[i - 1] === '{' && result[i + 1] === '}') {
-      result =
-        result.substring(0, i - 1) +
-        swaps[swapIndex--] +
-        result.substring(i + 2);
+    if (result[i] === '-' && result[i + 1] === '-') {
+      response += swaps[swapIndex--];
+      i += 1;
+      continue;
     }
+    
+    response += result[i]
   }
 
-  return result;
+  return response;
 }
